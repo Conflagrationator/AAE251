@@ -37,3 +37,4 @@ and if you input the same thing, they will always output the same thing.
 - Organize Different Analyses into different files and import into other's as necessary
 - Keep code below 80 lines as well as possible
 - Write all code to be in SI, then use the conversion module to convert only as the very first and last steps
+- If you write a section of code that has a likelyhood of breaking, write an exception for it so we know where to go and look for the error. use `raise Exception("message")`

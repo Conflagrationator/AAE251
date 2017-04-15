@@ -19,7 +19,7 @@ basePressures = [101325.0, 22634.008746132295, 2489.1856086672196, 120.492680018
 baseDensities = [1.225, 0.3639451299338376, 0.040025034448687088, 0.0014850787413445172, 0.00071914015402165508, 2.124386216253755e-05, 2.1981905205581133e-06, nan] # in kg/m^3 # precalculated
 
 ################################################################################
-# FUNCTIONS
+# CALCULATION FUNCTIONS
 ################################################################################
 
 def layerIndexForheight(h): # get a reference to the place in the lists where the base information is
@@ -50,7 +50,12 @@ def baseInformation(h):
 
 def informationAtHeight(hg):
     """Takes a Geometric Altitude and Returns the Geometric Altitude, Geopotential
-     Altitude, Temperature, Pressure and Density at that altitude in that order"""
+     Altitude, Temperature, Pressure and Density at that altitude in that order.
+     Defined from 0m to 104999m"""
+    
+    if hg >= 105000 or hg < 0: # if height out of range
+        raise Exception("Atmosphere values unknown at this altitude ({0}m)".format(hg))
+    
     h = geopotentialAltitudeForHeight(hg)
     t = temperatureAtHeight(h)
 
@@ -64,3 +69,19 @@ def informationAtHeight(hg):
         d = gradientLayerDensityAtHeight(h, baseDensity, t, baseTemperature, layerGradient)
     
     return hg, h, t, p, d
+
+################################################################################
+# REFERENCE FUNCTIONS
+################################################################################
+
+def temperatureAtAltitude(altitude):
+    _, _, temperature, _, _ = informationAtHeight(altitude)
+    return temperature
+
+def pressureAtAltitude(altitude):
+    _, _, _, pressure, _ = informationAtHeight(altitude)
+    return pressure
+
+def densityAtAltitude(altitude):
+    _, _, _, _, density = informationAtHeight(altitude)
+    return density
