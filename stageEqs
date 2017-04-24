@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Apr 23 22:51:00 2017
+
+@author: christopher
+"""
+
+from scipy import *
+from rocketEqs import * 
+import sys
+
+g = 9.8
+f_inert = [.09,.11]
+isp = [350, 400]
+dV = []
+m_pay = 1000
+
+def optimum_split(g,f_inert, isp)
