@@ -2,7 +2,7 @@ from scipy import *
 from Reference import *
 
 ################################################################################
-# Rocket Parameter Functions
+# ROCKET PARAMETER FUNCTIONS
 ################################################################################
 
 def f_inert(inertMass, propellantMass): # inert mass fraction
