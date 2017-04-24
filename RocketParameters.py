@@ -5,17 +5,17 @@ from Reference import *
 # ROCKET PARAMETER FUNCTIONS
 ################################################################################
 
-def f_inert(inertMass, propellantMass): # inert mass fraction
-    return inertMass / (inertMass + propellantMass)
+def f_inert(m_inert, m_prop): # inert mass fraction
+    return m_inert / (m_inert + m_prop)
 
-def inertMass(payloadMass, dV, Isp, f_inert): # kg
-    return (payloadMass * f_inert * (exp(dV / (g0 * Isp)) - 1))/(1 - f_inert * exp(dV / (g0 * Isp)))
+def inertMass(m_pay, dV, Isp, f_inert): # kg
+    return (m_pay * f_inert * (exp(dV / (g0 * Isp)) - 1))/(1 - f_inert * exp(dV / (g0 * Isp)))
 
-def propellantMass(payloadMass, dV, Isp): # kg
-    return (payloadMass * (exp(dV / (g0 * Isp) - 1) * (1 - f_inert)) / (1 - f_inert * exp(dV / (g0 * Isp))
+def propellantMass(m_pay, dV, Isp): # kg
+    return (m_pay * (exp(dV / (g0 * Isp) - 1) * (1 - f_inert))) / (1 - f_inert * exp(dV / (g0 * Isp)))
 
-def initialMass(payloadMass, f_inert, dV, Isp): # kg
-    return ((payloadMass * exp(dV / (g0 * Isp)) * (1 - f_inert))/(1 - f_inert * exp(dV / (g0 * Isp))
+def initialMass(m_pay, f_inert, dV, Isp): # kg
+    return (m_pay * exp(dV / (g0 * Isp)) * (1 - f_inert)) / (1 - f_inert * exp(dV / (g0 * Isp)))
 
-def dV(initialMass, finalMass, Isp): # total ΔV rocket provides
-    return -log(finalMass / initialMass) * g0 * Isp
+def rocketdV(mi, mf, Isp): # total ΔV rocket provides
+    return -log(mf / mi) * g0 * Isp

@@ -40,3 +40,4 @@ and if you input the same thing, they will always output the same thing.
 - If you write a section of code that has a likelyhood of breaking, write an exception for it so we know where to go and look for the error. use `raise Exception("message")`
 - Camel Capitalize Function Names (no underscores)
 - For any Hard-Coded Numbers, write the unit as first comment after it: `stuff # unit # any more comments`
+- Use subscripts for things that are unambiguously and necessarily subscripts (example: `f_inert`)
