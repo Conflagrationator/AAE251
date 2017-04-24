@@ -1,4 +1,5 @@
 from scipy import *
+from Reference import *
 
 ################################################################################
 # DATA
@@ -75,13 +76,13 @@ def informationAtHeight(hg):
 ################################################################################
 
 def temperatureAtAltitude(altitude):
-    _, _, temperature, _, _ = informationAtHeight(altitude)
-    return temperature
+    return informationAtHeight(altitude)[2]
 
 def pressureAtAltitude(altitude):
-    _, _, _, pressure, _ = informationAtHeight(altitude)
-    return pressure
+    return informationAtHeight(altitude)[3]
 
 def densityAtAltitude(altitude):
-    _, _, _, _, density = informationAtHeight(altitude)
-    return density
+    return informationAtHeight(altitude)[4]
+
+def machAtAltitude(altitude):
+    return sqrt(airHeatCapacityRatio * airIdealGasConstant * temperatureAtAltitude(altitude))
