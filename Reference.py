@@ -37,4 +37,8 @@ m_pay = 10000 #kg
 dV_needed = 9000 # m/s
 m_inert = [10000]
 
+# PARAFOIL INFORMATION
+
+#Found Cd using m*g = .5*Cd*rho*A*vt**2 (Drag at Terminal Velocity, solved for Cd)
+Cd
 
