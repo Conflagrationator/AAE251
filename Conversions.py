@@ -19,14 +19,21 @@ time = {
 mass = {
     "kg": 1,
     "slug": 0.0685218,
-    "slugs": 0.0685218}
+    "slugs": 0.0685218,
+    "metric ton": 1000,
+    "metric tons": 1000,
+    "ton": 907.185,
+    "tons": 907.185,
+    "metric butt ton": 420000}
 
 speed = {
     "m/s": 1,
     "km/s": 1e-3,
     "ft/s": 3.28084,
     "mph": 2.23694,
-    "kph": 3.6}
+    "kph": 3.6,
+    "kts": 0.514444,
+    "knots": 0.514444}
 
 force = {
     "N": 1,
