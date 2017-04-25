@@ -1,6 +1,8 @@
 from scipy import *
-import sys
-def hohmann_transfer(delta = 28.474,h1 = 200, h2 = 500, r_earth = 6378, mu_earth = 3.986*10**5):   
+import sys   
+from Reference import*
+
+def hohmann_transfer(delta ,h1, h2, r_earth, mu_earth ):
     r1 = h1 + r_earth    
     r2 = h2 + r_earth    
     delta = delta * pi/180
@@ -28,7 +30,7 @@ def hohmann_transfer(delta = 28.474,h1 = 200, h2 = 500, r_earth = 6378, mu_earth
     v_pt = (2 * (energy + (mu_earth / r1)))**.5    
     
     dV1 = v_pt - v_c1 #Geostationary TRANSFER Orbit
-    
+
     
     v_c2 = (mu_earth/r2)**.5
     v_at = (2 * (energy + (mu_earth / r2)))**.5
@@ -37,4 +39,4 @@ def hohmann_transfer(delta = 28.474,h1 = 200, h2 = 500, r_earth = 6378, mu_earth
     
     dV = dV1 + dV2
 
-    return dV
+    return (dV*1000, v_at*1000)

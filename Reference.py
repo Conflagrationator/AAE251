@@ -42,3 +42,9 @@ m_inert = [10000]
 #Found Cd using m*g = .5*Cd*rho*A*vt**2 (Drag at Terminal Velocity, solved for Cd)
 Cd
 
+r_earth = 6378
+mu_earth = 3.986*10**5
+h1 = 200000 #m
+h2 = 500000 #m
+delta = 28.474
+
