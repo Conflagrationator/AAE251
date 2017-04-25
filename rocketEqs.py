@@ -24,7 +24,7 @@ def mass_inert(m_pay, dV, isp, f_inert): # Calculates Intital mass
     return(m_inert)
     
     
-def mass_prop(m_pay, dV, g0, isp):
+def mass_prop(m_pay, dV, g0, isp): # calculates the weight of the propellent 
     eV = exp(dV/(g0*isp))
     
     mProp = (m_pay*(eV-1)*(1-f_inert))/(1-f_inert*eV)
@@ -32,7 +32,7 @@ def mass_prop(m_pay, dV, g0, isp):
     #print(mProp)
     return(mProp)
     
-def initial_mass(m_pay,f_inert, dV, g0, isp):
+def initial_mass(m_pay,f_inert, dV, g0, isp): # Calculates the intial mass of the stage
     
     eV = exp(dV/(g0*isp))
     
@@ -40,7 +40,7 @@ def initial_mass(m_pay,f_inert, dV, g0, isp):
     #print(initialMass)
     return(initialMass)
     
-def deltaV(f_inert,g0,isp): 
+def deltaV(f_inert,g0,isp): # Calculated DeltaV 
     deltaV = -(log(f_inert))*g0*isp
     #print(deltaV)
     return(deltaV)
