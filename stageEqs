@@ -19,7 +19,7 @@ import sys
 #m_pay = 10000
 #dV_needed = 9000
 
-def rocket_mass(g0,f_inert, dV, isp,m_pay):  # f_inert, dV, isp are lists 
+def rocket_mass(g0,f_inert, dV, isp,m_pay):  #Calculates the total rocket mass
     
     stage2 = initial_mass(m_pay,f_inert[1], dV[1], g0, isp[1])
     #print("Stage 2 Mass;", stage2)
@@ -32,7 +32,7 @@ def rocket_mass(g0,f_inert, dV, isp,m_pay):  # f_inert, dV, isp are lists
 #rocket_mass(g,f_inert, dV, isp)
 
 
-def split_deltaV(g0,f_inert, dV_needed, isp):
+def split_deltaV(g0,f_inert, dV_needed, isp): # calculates the split deltaV 
   
     massList = [] # Will hold the list of masses 
     splitList = []
