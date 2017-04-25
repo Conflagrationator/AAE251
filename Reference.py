@@ -51,8 +51,6 @@ CdChute = 2.510418402
 
 # ORBIT INFORMATION
 
-r_earth = 6378*10**3 #m
-mu_earth = 3.986*10**14 #m^3/s^2
 h1 = 200000 #m
 h2 = 500000 #m
 delta = 28.474 #Degrees
