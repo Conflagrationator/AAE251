@@ -40,6 +40,9 @@ def initial_mass(m_pay,f_inert, dV, g, isp):
     return(initialMass)
     
 def deltaV(f_inert,g,isp): 
+    deltaV = -(log(f_inert))*g*isp
+    print(deltaV)
+    return(deltaV)
     
 
 
