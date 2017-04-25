@@ -40,11 +40,12 @@ m_inert = [10000]
 # PARAFOIL INFORMATION
 
 #Found Cd using m*g = .5*Cd*rho*A*vt**2 (Drag at Terminal Velocity, solved for Cd)
-Cd
+CdChute = 2.510418402
 
-r_earth = 6378
-mu_earth = 3.986*10**5
+# ORBIT INFORMATION
+
+r_earth = 6378*10**3 #m
+mu_earth = 3.986*10**14 #m^3/s^2
 h1 = 200000 #m
 h2 = 500000 #m
 delta = 28.474
-
