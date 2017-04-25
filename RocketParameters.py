@@ -4,7 +4,7 @@ from scipy import *
 # ROCKET PARAMETER FUNCTIONS
 ################################################################################
 
-def f_inert(m_inert, m_prop): # inert mass fraction
+def inert_mass(m_inert, m_prop): # inert mass fraction
     return m_inert / (m_inert + m_prop)
 
 def inertMass(m_pay, dV, Isp, f_inert): # kg
@@ -18,3 +18,5 @@ def initialMass(m_pay, f_inert, dV, Isp): # kg
 
 def rocketdV(mi, mf, Isp): # total ΔV rocket provides
     return -log(mf / mi) * g0 * Isp
+
+print(inertMass(m_pay, dV[0], Isp[0], f_inert[0]))
