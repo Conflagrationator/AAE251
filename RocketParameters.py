@@ -1,5 +1,5 @@
 from scipy import *
-
+from Reference import*
 ################################################################################
 # ROCKET PARAMETER FUNCTIONS
 ################################################################################
@@ -19,4 +19,3 @@ def initialMass(m_pay, f_inert, dV, Isp): # kg
 def rocketdV(mi, mf, Isp): # total ΔV rocket provides
     return -log(mf / mi) * g0 * Isp
 
-print(inertMass(m_pay, dV[0], Isp[0], f_inert[0]))
