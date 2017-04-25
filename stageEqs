@@ -12,10 +12,11 @@ import sys
 
 g = 9.8
 #[Stage 1 , Stage 2]
-f_inert = [.09,.11]
-isp = [350, 400]
+f_inert = [.08,.12]
+isp = [310, 360]
 dV = [5000,2000]
-m_pay = 15000
+m_pay = 10000
+dV_needed = 9000
 
 def rocket_mass(g,f_inert, dV, isp):  # f_inert, dV, isp are lists 
     
@@ -27,12 +28,29 @@ def rocket_mass(g,f_inert, dV, isp):  # f_inert, dV, isp are lists
     
     return(rocketMass)
     
-rocket_mass(g,f_inert, dV, isp)
+#rocket_mass(g,f_inert, dV, isp)
 
-#
-#def split_deltaV(g,f_inert, dV, isp):
-#    
-#    massList = [] # Will hold the list of masses 
-#    splitList = []
-#    x = .01
-#    mass = rocket_mass(g,f_inert, dv, isp)
+
+def split_deltaV(g,f_inert, dV_needed, isp):
+  
+    massList = [] # Will hold the list of masses 
+    splitList = []
+    x = .2
+    while x <= .8:
+        
+        v0 = dV_needed*x
+        v1 = dV_needed*(1-x)
+        altDV =[ v0,v1]
+        print(altDV)
+        mass = rocket_mass(g,f_inert, altDV, isp)
+        massList.append(mass)
+        splitList.append(x)
+        x += .01
+        
+    minMass = min(massList)
+    minIndex = massList.index(minMass)
+    split = splitList[minIndex]
+    print(split)
+    return(split)
+        
+split_deltaV(g,f_inert, dV_needed, isp)
