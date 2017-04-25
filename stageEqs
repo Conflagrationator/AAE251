@@ -8,30 +8,31 @@ Created on Sun Apr 23 22:51:00 2017
 
 from scipy import *
 from rocketEqs import * 
+from Reference import *
 import sys
 
-g = 9.8
-#[Stage 1 , Stage 2]
-f_inert = [.08,.12]
-isp = [310, 360]
-dV = [5000,2000]
-m_pay = 10000
-dV_needed = 9000
+#g0 = 9.8
+##[Stage 1 , Stage 2]
+#f_inert = [.08,.12]
+#isp = [310, 360]
+#dV = [5000,2000]
+#m_pay = 10000
+#dV_needed = 9000
 
-def rocket_mass(g,f_inert, dV, isp):  # f_inert, dV, isp are lists 
+def rocket_mass(g0,f_inert, dV, isp,m_pay):  # f_inert, dV, isp are lists 
     
-    stage2 = initial_mass(m_pay,f_inert[1], dV[1], g, isp[1])
-    print("Stage 2 Mass;", stage2)
+    stage2 = initial_mass(m_pay,f_inert[1], dV[1], g0, isp[1])
+    #print("Stage 2 Mass;", stage2)
     
-    rocketMass = initial_mass(stage2,f_inert[0], dV[0], g, isp[0])
-    print("Total Rocket Mass:", rocketMass)
+    rocketMass = initial_mass(stage2,f_inert[0], dV[0], g0, isp[0])
+    #print("Total Rocket Mass:", rocketMass)
     
     return(rocketMass)
     
 #rocket_mass(g,f_inert, dV, isp)
 
 
-def split_deltaV(g,f_inert, dV_needed, isp):
+def split_deltaV(g0,f_inert, dV_needed, isp):
   
     massList = [] # Will hold the list of masses 
     splitList = []
@@ -41,8 +42,8 @@ def split_deltaV(g,f_inert, dV_needed, isp):
         v0 = dV_needed*x
         v1 = dV_needed*(1-x)
         altDV =[ v0,v1]
-        print(altDV)
-        mass = rocket_mass(g,f_inert, altDV, isp)
+        #print(altDV)
+        mass = rocket_mass(g0,f_inert, altDV, isp, m_pay)
         massList.append(mass)
         splitList.append(x)
         x += .01
@@ -50,7 +51,7 @@ def split_deltaV(g,f_inert, dV_needed, isp):
     minMass = min(massList)
     minIndex = massList.index(minMass)
     split = splitList[minIndex]
-    print(split)
+    #print(split)
     return(split)
         
-split_deltaV(g,f_inert, dV_needed, isp)
+#print(split_deltaV(g0,f_inert, dV_needed, isp))
