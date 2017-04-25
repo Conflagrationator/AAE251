@@ -16,7 +16,6 @@ isp = [350, 400]
 dV = [5000,5000]
 m_pay = 1000
 
-def rocket_mass(g,f_inert, dv, isp):
     
     stage2 = initial_mass(m_pay,f_inert[1], dV[1], g, isp[1])
     print("Stage 2 Mass;", stage2)
