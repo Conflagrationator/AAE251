@@ -11,26 +11,13 @@ from RocketParameters import *
 from Reference import *
 import sys
 
-#g0 = 9.8
-##[Stage 1 , Stage 2]
-#f_inert = [.08,.12]
-#isp = [310, 360]
-#dV = [5000,2000]
-#m_pay = 10000
-#dV_needed = 9000
-
 def rocket_mass(g0,f_inert, dV, isp,m_pay):  #Calculates the total rocket mass
     
     stage2 = initial_mass(m_pay,f_inert[1], dV[1], g0, isp[1])
-    #print("Stage 2 Mass;", stage2)
-    
+ 
     rocketMass = initial_mass(stage2,f_inert[0], dV[0], g0, isp[0])
-    #print("Total Rocket Mass:", rocketMass)
-    
-    return(rocketMass)
-    
-#rocket_mass(g,f_inert, dV, isp)
 
+    return(rocketMass)
 
 def split_deltaV(g0,f_inert, dV_needed, isp): # calculates the split deltaV 
   
@@ -42,7 +29,6 @@ def split_deltaV(g0,f_inert, dV_needed, isp): # calculates the split deltaV
         v0 = dV_needed*x
         v1 = dV_needed*(1-x)
         altDV =[ v0,v1]
-        #print(altDV)
         mass = rocket_mass(g0,f_inert, altDV, isp, m_pay)
         massList.append(mass)
         splitList.append(x)
@@ -51,7 +37,4 @@ def split_deltaV(g0,f_inert, dV_needed, isp): # calculates the split deltaV
     minMass = min(massList)
     minIndex = massList.index(minMass)
     split = splitList[minIndex]
-    #print(split)
     return(split)
-        
-#print(split_deltaV(g0,f_inert, dV_needed, isp))
