@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Apr 23 22:51:00 2017
-
-@author: christopher
-"""
-
 from scipy import *
 from RocketParameters import * 
 from Reference import *
