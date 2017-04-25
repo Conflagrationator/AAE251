@@ -22,8 +22,8 @@ totalDeltaV = 0
 #Tansfer Orbit 
 ####################################################
 
-totalDeltaV += hohmann_transfer(delta ,h1, h2, r_earth, mu_earth )[0] # This calculates the optimal ∆V for to put the payload into a geostationary orbit and plane change
-print(hohmann_transfer(delta ,h1, h2, r_earth, mu_earth ))
+totalDeltaV += hohmann_transfer(delta ,h1, h2, rEarth, muEarth )[0] # This calculates the optimal ∆V for to put the payload into a geostationary orbit and plane change
+print(hohmann_transfer(delta ,h1, h2, rEarth, muEarth ))
 ####################################################
 #Second Stage/ Circular Orbit 
 ####################################################

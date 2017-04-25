@@ -4,9 +4,16 @@ from Launch import *
 # REFERENCE NUMBERS
 ################################################################################
 
-# EARTH PARAMETERS
+# UNIVERSAL CONSTANTS
 
-g0 = 9.80665 # m/s^2
+G = 6.67408e-11 # m^3/(kg*s^2) # universal gravitation constant
+
+# EARTH CONSTANTS
+
+g0 = 9.80665 # m/s^2 # gravitational acceleration at sea level
+mEarth = 5.9723e24 # kg # mass of earth
+rEarth = 6378137 # m # radius of earth
+muEarth = G * mEarth # m^3/s^2
 
 # ATMOSPERE PARAMETERS
 
@@ -15,8 +22,8 @@ airHeatCapacityRatio = 1.4 # unitless # ratio of specific heats
 
 # LAUNCH LOSSES
 
-dVdragLoss = dragLossUpToAltitude(20000) # m/s
-dVgravityLoss = gravityLossUpToAltitude(20000) # m/s
+dVdragLoss = dragLossUpToAltitude(0) # m/s
+dVgravityLoss = gravityLossUpToAltitude(0) # m/s
 dVSteeringLoss = steeringLoss() # m/s
 
 # TRANSFERS
@@ -31,7 +38,7 @@ dVforGeoStatOrbit = 4478.0452652 + dVdragLoss + dVgravityLoss + dVSteeringLoss #
 
 #[Stage 1 , Stage 2]
 f_inert = [.08,.12] # inert mass fraction 
-Isp = [310, 360] # Isp 
+Isp = [310, 360] # s
 dV = [5000,2000] #m/s
 m_pay = 10000 #kg
 dV_needed = 9000 # m/s
@@ -48,4 +55,4 @@ r_earth = 6378*10**3 #m
 mu_earth = 3.986*10**14 #m^3/s^2
 h1 = 200000 #m
 h2 = 500000 #m
-delta = 28.474
+delta = 28.474 #Degrees
