@@ -2,6 +2,10 @@ from scipy import *
 import sys   
 from Reference import*
 
+################################################################################
+#Hohmann Transfer for Both Orbits
+################################################################################
+
 def HohmannTransfer(Calculate500):
     r1 = h1 + rEarth
     
