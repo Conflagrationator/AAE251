@@ -1,5 +1,5 @@
 from scipy import *
-import sys   
+import sys
 from Reference import*
 
 ################################################################################
@@ -44,4 +44,3 @@ def HohmannTransfer(Calculate500):
         dV = dV1 + dV2
 
     return (dV, v_pt)
-
