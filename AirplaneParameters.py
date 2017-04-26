@@ -1,4 +1,5 @@
 from scipy import *
+from Reference import *
 
 ################################################################################
 # AIRPLANE PARAMETER FUNCTIONS
@@ -15,3 +16,11 @@ def turbojetRange(freestreamDensity, wingReferenceArea, CL, CD, tsfc, fullWeight
 
 def turbojetEndurance(tsfc, CL, CD, fullWeight, emptyWeight):
     return (1 / tsfc) * (CL / CD) * log(fullWeight / emptyWeight)
+
+
+################################################################################
+# ENGINE ANALYSIS
+################################################################################
+
+def runForEachTurbofan(function):
+    map(function, turbofanData)
