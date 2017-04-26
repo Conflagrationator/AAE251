@@ -39,3 +39,6 @@ def hohmann_transfer(delta ,h1, h2, rEarth, muEarth ):
     
     dV = dV1 + dV2
 
+    return (dV, v_pt)
+    
+    
