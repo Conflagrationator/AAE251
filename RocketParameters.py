@@ -1,10 +1,10 @@
 from scipy import *
-<<<<<<< Updated upstream
+
 from Reference import*
-=======
+
 from Reference import *
 
->>>>>>> Stashed changes
+
 ################################################################################
 # ROCKET PARAMETER FUNCTIONS
 ################################################################################
@@ -23,7 +23,5 @@ def initialMass(m_pay, f_inert, dV, Isp): # kg
 
 def rocketdV(mi, mf, Isp): # total ΔV rocket provides
     return -log(mf / mi) * g0 * Isp
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
+
