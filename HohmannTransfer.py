@@ -18,7 +18,7 @@ def hohmann_transfer(delta ,h1, h2, rEarth, muEarth ):
     v_at = (2 * (energy + (muEarth / r2)))**.5
 
     dV2 = v_c2 - v_at
-    
+    print(dV2)
     dV = dV1 + dV2
     
     Period = 24*60*60
@@ -38,5 +38,6 @@ def hohmann_transfer(delta ,h1, h2, rEarth, muEarth ):
     dV2 = ((v_at*cos(delta) - v_c2)**2 + (v_at - sin(delta))**2)**.5
     
     dV = dV1 + dV2
-
+    print(dV)
     return (dV*1000, v_at*1000)
+    
