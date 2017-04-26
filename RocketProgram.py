@@ -10,7 +10,7 @@ from HohmannTransfer import*
 
 totalDeltaV = 0
 
-<<<<<<< Updated upstream
+
 ################################################################################
 #Tansfer Orbit 
 ################################################################################
@@ -20,7 +20,7 @@ totalDeltaV += HohmannTransfer(Calculate500)[0] # This calculates the optimal �
 ################################################################################
 #Second Stage/ Circular Orbit 
 ################################################################################
-=======
+
 
 ### Finding ∆V 
 
@@ -33,7 +33,7 @@ totalDeltaV += sqrt(mu_earth/(h1+r_earth)) # ∆V to get into the parking orbit
 #splitTemp = split_deltaV(g0,f_inert, totalDeltaV, Isp)
 #firstReenterV = totalDeltaV*splitTemp 
 #totalDeltaV +=firstReenterV 
->>>>>>> Stashed changes
+
 
 # Now we have a total ∆V.  
 
@@ -53,15 +53,9 @@ stageOneMass = initialMass(stageTwoMass, f_inert[0], totalDeltaV*(1-split), Isp[
 print(stageOneMass)
 
 
-<<<<<<< Updated upstream
+
 ################################################################################
 #1st Stage 
 ################################################################################
 
 # add landing ∆V after split 
-=======
-
-
-
-
->>>>>>> Stashed changes

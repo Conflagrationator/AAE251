@@ -9,15 +9,11 @@ import sys
 
 def rocket_mass(g0, f_inert, dV, isp, m_pay):  #Calculates the total rocket mass
     
-<<<<<<< Updated upstream
+
     stage2 = initial_mass(m_pay, f_inert[1], dV[1], g0, isp[1])
  
     rocketMass = initial_mass(stage2, f_inert[0], dV[0], g0, isp[0])
-=======
-    stage2 = initialMass(m_pay,f_inert[1], dV[1], isp[1])
- 
-    rocketMass = initialMass(stage2,f_inert[0], dV[0],isp[0])
->>>>>>> Stashed changes
+
 
     return(rocketMass)
 

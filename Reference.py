@@ -37,21 +37,20 @@ dVforGeoStatOrbit = 4478.0452652 + dVdragLoss + dVgravityLoss + dVSteeringLoss #
 # [(name of rocket, Isp, mass, fuel capacity)]
 
 #[Stage 1 , Stage 2]
-<<<<<<< Updated upstream
+
 f_inert = [0.08, 0.12] # inert mass fraction 
 Isp = [310, 360] # s
 dV = [5000, 2000] #m/s
 m_pay = 10000 #kg
 dV_needed = 9000 # m/s
 m_inert = [10000]
-=======
+
 f_inert = [.08,.15] # inert mass fraction 
 Isp = [360, 360] # s
 payload = 5000
 fairing = 1000
 m_pay = payload+fairing #kg
 
->>>>>>> Stashed changes
 
 # PARAFOIL INFORMATION
 
