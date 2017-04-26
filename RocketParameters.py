@@ -2,7 +2,7 @@ from scipy import *
 
 from Reference import*
 
-from Reference import *
+
 
 
 ################################################################################
