@@ -5,7 +5,7 @@ weight, drag, and thrust available of the airplane.
 import scipy as sp
 from Atmosphere import*
 #BPR, length, fandia, weight1, thrust_available
-def time_to_climb():
+def TimeToClimb():
     """
     BPR is unitless
     length should be given in units of m
