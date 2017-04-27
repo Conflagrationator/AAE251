@@ -63,8 +63,19 @@ h1 = 200000 #m
 h2 = 500000 #m
 delta = 28.474 #Degrees
 
-# TURBOFAN DATA
+# PLANE DATA 
 
+hf = 18288 #final altitude (m)
+theta = 16.5 #angle of attack (Degrees)
+Cd = 0.04423 #coefficient of drag
+Cl = 1.582 #coefficient of lift
+ThrustMax = 510000 *2 #(N)
+ThrustMin = 330000 #(N)
+#ESTIMATES (CHANGE LATER)
+S = 40 #reference area (m^2)
+W = 150000 * 0.453592 #weight (kg) (this value is an average for now)
+
+# TURBOFAN DATA
 # [(Model, Bypass (min), Bypass (max), Length (min) (m), Length (max) (m), Fan diameter (min) (m), Fan diameter (max) (m), Weight (min) (kg), Weight (max) (kg), Thrust (min) (N), Thrust (max) (N))]
 turbofanData = [
     ("GE GE90", 8.7, 9.9, 5.18, 5.40, 3.12, 3.25, 6858.32, 7819.93, 330000, 510000),
