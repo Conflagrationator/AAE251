@@ -117,7 +117,4 @@ with open("Resources/Naca2412.csv") as csvfile:
     columnTitles = next(reader) # consume first line & get column titles
     airfoilData = list(map(lambda row: dict(zip(columnTitles, map(float, row))), reader)) # get rows as dictionaries
 
-# GENERAL AIRPLANE PARAMETERS
-
-chord = 2 # m # chord length
-wingspan = 20 # m # wingspan
+# AIRCRAFT PERFORMANCE
