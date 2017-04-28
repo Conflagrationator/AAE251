@@ -98,19 +98,18 @@ def timeToClimb():
         PA = PA0 * (rhoAlt/rho0) #power available (N)
         PR = PR0 * ((rho0/rhoAlt)**.5) #power required (N)
         RC = (PA - PR) / Weight #Rate of Climb (m/min)
-        #print(RC)
         RCarray.append(1/RC)
         altitudes.append(h)
     tClimb = trapz(RCarray, altitudes) #Time to altitude (min)
     return tClimb
     
-def EngineLocation(h,L,l):
+def WingLocation(h,L):
     q = dynamicPressure(densityAtAltitude(h),CruiseSpeedCalc(h,Mass,c,b))
     S = wingReferenceArea(c, b)
     M = Cm * q * S * c 
-    print(M)
-    EngineLocation = (-.5*(emptyWeight - engineWeight)*L + (7/8)*l*emptyWeight + (1/16)*emptyWeight + M)/engineWeight
-    return EngineLocation
+    wingLocation = (-.5*(emptyWeight - engineWeight)*L + (1/16)*emptyWeight + M)/(engineWeight - (7/8)*emptyWeight)
+    print(wingLocation)
+    return wingLocation
 
 ################################################################################
 # ENGINE ANALYSIS

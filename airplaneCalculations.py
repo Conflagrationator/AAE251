@@ -18,8 +18,8 @@ VStall = stallSpeed(W, densityAtAltitude(convert(60000,"ft","m")), S, maxCL)
 
 # RANGE
 
-#airplaneRange = turbojetRange(densityAtAltitude(convert(60000,"ft","m")), S, Cl, Cd, tsfc, fullWeight, emptyWeight)
-#print(airplaneRange)
+airplaneRange = turbojetRange(densityAtAltitude(convert(60000,"ft","m")), S, Cl, Cd, tsfc, fullWeight, emptyWeight)
+print(airplaneRange)
 
 # ENDURANCE
 
@@ -33,11 +33,13 @@ print(convert(Climb,"s","hr"))
 
 # TAKEOFF DISTANCE
 
-
+liftoffDistance(altitude, airplaneWeight, stallVelocity, thrust, coefficientOfRollingFriction, b, c, CL, wingHeightOffGround, spanEfficiencyFactor)
+    
 
 # LANDING DISTANCE
 
 
+landingDistance(altitude, airplaneWeight, stallVelocity, thrust, b, c, CL, wingHeightOffGround, spanEfficiencyFactor)
 
 ################################################################################
 # PLOTS
