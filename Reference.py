@@ -1,5 +1,6 @@
 import csv
 from Launch import *
+from Conversions import *
 
 ################################################################################
 # UTILITY FUNCTIONS
@@ -106,17 +107,18 @@ theta = 16.5 #angle of attack (Degrees)
 Cd = 0.04423 #coefficient of drag
 Cl = 1.582 #coefficient of lift
 EngineNum = 2 #Number of engines on the plane
-ThrustMax = 510000 * EngineNum #(N)
+ThrustMax = 160000 * EngineNum #(N)
 ThrustMin = 330000 * EngineNum #(N)
 #ESTIMATES (CHANGE LATER)
-S = 40 #reference area (m^2)
-Mass = 60000 #(kg)
+S = 160 #reference area (m^2)
+Mass = 30000 #(kg)
 W = Mass * g0 #(N)
 b = 40 #(m)
 c = 4 #(m)
 MassEngine = 2594 * 2
 WEngine = MassEngine * g0
 Cm = 0.0525
+cruiseAltitude = convert(20000, "ft", "m")
 
 # Creates a list "airfoilData" which has the format [{"category": value}] for
 # each entry in the csv file

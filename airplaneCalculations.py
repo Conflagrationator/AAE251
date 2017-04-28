@@ -18,7 +18,8 @@ airplaneRange = turbojetRange(freestreamDensity, S, CL, CD, tsfc, fullWeight, em
 
 # ENDURANCE
 
-
+Endurance = airplaneEndurance(.00008064, Cl, Cd, 32267, 30000)
+convert(Endurance, "s", "hr")
 
 # TIME TO CLIMB
 

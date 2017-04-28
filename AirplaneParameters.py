@@ -57,10 +57,10 @@ def thrustGivenPower(power, freestreamVelocity):
 
 # PERFORMANCE
 
-def turbojetRange(freestreamDensity, S, CL, CD, tsfc, fullWeight, emptyWeight):
+def airplaneRange(freestreamDensity, S, CL, CD, tsfc, fullWeight, emptyWeight):
     return 2 * sqrt(2 / (freestreamDensity * S)) * (sqrt(CL) / CD) * (1 / tsfc) * (sqrt(fullWeight) - sqrt(emptyWeight))
 
-def turbojetEndurance(tsfc, CL, CD, fullWeight, emptyWeight):
+def airplaneEndurance(tsfc, CL, CD, fullWeight, emptyWeight):
     return (1 / tsfc) * (CL / CD) * log(fullWeight / emptyWeight)
 
 def liftoffDistance(altitude, airplaneWeight, stallVelocity, thrust, coefficientOfRollingFriction, b, c, CL, wingHeightOffGround, spanEfficiencyFactor):
@@ -96,7 +96,7 @@ def timeToClimb():
         PA = PA0 * (rhoAlt/rho0) #power available (N)
         PR = PR0 * ((rho0/rhoAlt)**.5) #power required (N)
         RC = (PA - PR) / W #Rate of Climb (m/min)
-        print(RC)
+        #print(RC)
         RCarray.append(1/RC)
         altitudes.append(h)
     tClimb = sp.trapz(RCarray, altitudes) #Time to altitude (min)
