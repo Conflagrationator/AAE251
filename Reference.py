@@ -135,4 +135,3 @@ with open("Resources/Naca2412.csv") as csvfile:
     airfoilData = list(map(lambda row: dict(zip(columnTitles, map(float, row))), reader)) # get rows as dictionaries
 
 # AIRCRAFT PERFORMANCE
-

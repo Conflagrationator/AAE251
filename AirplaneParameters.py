@@ -90,7 +90,7 @@ def timeToClimb():
     PA0 = ThrustMax * V0
     RCarray = [] 
     altitudes = [] 
-    for h in range(h1,hf+1):
+    for h in range(h1, hf+1):
         rhoAlt = densityAtAltitude(h) #density of air at altitude 'h' (kg/m^3)
         V = V0 * ((rho0/rhoAlt)**.5) #Velocity of aircraft (m/s)
         PA = PA0 * (rhoAlt/rho0) #power available (N)
@@ -109,6 +109,7 @@ def EngineLocation(h,L,l):
     print(M)
     EngineLocation = (-.5*(W - WEngine)*L + (7/8)*l*W + (1/16)*W + M)/WEngine
     return EngineLocation
+
 ################################################################################
 # ENGINE ANALYSIS
 ################################################################################
