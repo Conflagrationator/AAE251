@@ -85,25 +85,24 @@ def landingDistance(altitude, airplaneWeight, stallVelocity, thrust, b, c, CL, w
     averageDrag = 0.5 * freestreamDensity * averageVelocity**2 * S * (profileDragCoefficient(CL) + groundEffectCoefficient * inducedDragCoefficient(CL, aspectRatio(c, b), spanEfficiencyFactor))
     return (touchdownVelocity**2 * airplaneWeight) / (g0 * 2 * (averageDrag + 0.4 * (airplaneWeight - averageLift)))
 
-def timeToClimb(Weight):
+def timeToClimbToAltitude(altitude, weight):
     h1 = 0 #initial altitude (m)
     S = wingReferenceArea(c,b)
     rho0 = densityAtAltitude(0) #air density at sea level (kg/m^3)
-    V0 = (2*Weight/(rho0*S*Cl))**.5 #Velocity at sea-level (m/s)
-    PR0 = ((2*(Weight**3)*(Cd**2))/(rho0*S*(Cl**3)))**.5
+    V0 = (2*weight/(rho0*S*Cl))**.5 #Velocity at sea-level (m/s)
+    PR0 = ((2*(weight**3)*(Cd**2))/(rho0*S*(Cl**3)))**.5
     PA0 = Thrust * V0
     RCarray = [] 
     altitudes = []
-    for h in range(h1, int(hFinal)+1):
+    for h in range(h1, int(altitude)+1):
         rhoAlt = densityAtAltitude(h) #density of air at altitude 'h' (kg/m^3)
         V = V0 * ((rho0/rhoAlt)**.5) #Velocity of aircraft (m/s)
         PA = PA0 * (rhoAlt/rho0) #power available (N)
         PR = PR0 * ((rho0/rhoAlt)**.5) #power required (N)
-        RC = (PA - PR) / Weight #Rate of Climb (m/min)
+        RC = (PA - PR) / weight #Rate of Climb (m/min)
         RCarray.append(1/RC)
         altitudes.append(h)
-    tClimb = trapz(RCarray, altitudes) #Time to altitude (min)
-    return tClimb
+    return trapz(RCarray, altitudes) #Time to altitude (min)
     
 def initialRoC(Weight):
     h1 = 0 #initial altitude (m)
@@ -112,24 +111,19 @@ def initialRoC(Weight):
     V0 = (2*Weight/(rho0*S*Cl))**.5 #Velocity at sea-level (m/s)
     PR0 = ((2*(Weight**3)*(Cd**2))/(rho0*S*(Cl**3)))**.5
     PA0 = Thrust * V0
-    RC0 = (PA0 - PR0) / Weight
+    return (PA0 - PR0) / Weight
     
-    return RC0
-    
-def WingLocation(altitude,L):
+def wingLocation(altitude,L):
     q = dynamicPressure(densityAtAltitude(altitude),CruiseSpeedCalc(altitude,Mass,c,b))
     S = wingReferenceArea(c, b)
-    M = Cm * q * S * c 
-    wingLocation = (-.5*(emptyWeight - engineWeight)*L + (1/16)*emptyWeight + M)/(engineWeight - (7/8)*emptyWeight)
-    print(wingLocation)
-    return wingLocation
-    
-def CruiseSpeedCalc(cruiseAltitude, weight, c, b):
-    rho0 = densityAtAltitude(cruiseAltitude) #air density at altitude 'altitude'
+    M = Cm * q * S * c # Moment of main wing
+    return (-0.5*(emptyWeight - engineWeight)*L + (1/16)*emptyWeight + M)/(engineWeight - (7/8)*emptyWeight)
+
+def cruiseSpeedAtAltitude(altitude, weight, c, b):
+    rho0 = densityAtAltitude(altitude) # air density at altitude
     S = wingReferenceArea(c, b)
     Cl0 = liftCoefficientAtAngleOfAttack(0)
-    V_cruise = sqrt(7/8*weight / (0.5 * Cl0 * rho0 * S))
-    return V_cruise
+    return sqrt(7/8*weight / (0.5 * Cl0 * rho0 * S))
 
 ################################################################################
 # ENGINE ANALYSIS

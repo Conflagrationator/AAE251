@@ -103,22 +103,15 @@ delta = 28.474 # Degrees
 
 # PLANE DATA 
 
-coefficientOfRF = .02 
-spanEF = .8
+coefficientOfRF = 0.02 
+spanEF = 0.8 # FIXME: test value
 wingHeight = 4
-
-hFinal = (convert(55000,"ft","m")) #final altitude (m)
-hCruise = (convert(25000,"ft","m"))
-theta = 16.5 #angle of attack (Degrees)
-Cd = 0.04423 #coefficient of drag
-Cd0 = .00568
-Cl = 1.582 #coefficient of lift
-Cl0 = .2442
+hFinal = convert(55000,"ft","m") #final altitude (m)
 EngineNum = 4 #Number of engines on the plane
 Thrust = convert(12670,"lbs","N") * EngineNum #(N)
 tsfc = convert(.7,"lbm/lbf/hr","kg/(N*s)")
-b = 40 #(m)
-c = 4 #(m)
+wingspan = 40 #(m)
+chord = 4 #(m)
 fullMass = 37000 #(kg)
 fullWeight = fullMass * g0 #(N)
 emptyMass = 20000
