@@ -10,36 +10,47 @@ from Atmosphere import *
 S = wingReferenceArea(c,b)
 AR = aspectRatio(c, b)
 maxCL = max(list(map(lambda row: row["Cl"], airfoilData)))
-VStall = stallSpeed(W, densityAtAltitude(convert(60000,"ft","m")), S, maxCL)
+VStall = stallSpeed(W, densityAtAltitude(hf), S, maxCL)
+VCruise = CruiseSpeedCalc(hCruise, (fuelWeight+emptyWeight), c, b)
 
 ################################################################################
 # PERFORMANCE VALUES
 ################################################################################
 
+# CRUISE SPEED
+
+VCruise = CruiseSpeedCalc(hCruise, (fuelWeight+emptyWeight), c, b)
+print('Cruise Speed(m/s):   ',VCruise)
+
 # RANGE
 
-airplaneRange = turbojetRange(densityAtAltitude(convert(60000,"ft","m")), S, Cl, Cd, tsfc, fullWeight, emptyWeight)
-print(airplaneRange)
+airplaneRange = turbojetRange(densityAtAltitude(convert(25000,"ft","m")), S, Cl, Cd, tsfc, (emptyWeight+fuelWeight), emptyWeight)
+print('Range(km):           ', convert(airplaneRange, "m", "km"))
 
 # ENDURANCE
 
-Endurance = airplaneEndurance(.00008064, Cl, Cd, 32267, 30000)
-print(convert(Endurance, "s", "hr"))
+Endurance = airplaneEndurance(tsfc, Cl, Cd, (emptyWeight+fuelWeight), emptyWeight)
+print('Endurance(hr):       ', convert(Endurance, "s", "hr"))
+
+# INITIAL RATE OF CLIMB 
+
+RC0 = initialRoC(emptyWeight + fuelWeight)
+print('Rate of Climb(km/hr):', convert(RC0, "m/s","km/hr"))
 
 # TIME TO CLIMB
 
-Climb = timeToClimb()
-print(convert(Climb,"s","hr"))
+Climb = timeToClimb(emptyWeight + fuelWeight)
+print('Time to Climb(hr):   ', convert(Climb,"s","hr"))
 
 # TAKEOFF DISTANCE
 
-liftoffDistance(altitude, airplaneWeight, stallVelocity, thrust, coefficientOfRollingFriction, b, c, CL, wingHeightOffGround, spanEfficiencyFactor)
-    
+LiftD = liftoffDistance(0, (emptyWeight+fuelWeight), VStall, Thrust, coefficientOfRF, b, c, Cl0, wingHeight, spanEF)
+print('Liftoff Distance(m): ', LiftD)
 
 # LANDING DISTANCE
 
-
-landingDistance(altitude, airplaneWeight, stallVelocity, thrust, b, c, CL, wingHeightOffGround, spanEfficiencyFactor)
+LandD = landingDistance(0, (emptyWeight+fuelWeight), VStall, Thrust, b, c, Cl0, wingHeight, spanEF)
+print('Landing Distance(m): ', LandD)
 
 ################################################################################
 # PLOTS
