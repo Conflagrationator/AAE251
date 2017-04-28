@@ -84,22 +84,24 @@ def landingDistance(altitude, airplaneWeight, stallVelocity, thrust, b, c, CL, w
 
 def timeToClimb():
     h1 = 0 #initial altitude (m)
+    S = wingReferenceArea(c,b)
+    Weight = emptyWeight + fuelWeight
     rho0 = densityAtAltitude(0) #air density at sea level (kg/m^3)
-    V0 = (2*W/(rho0*S*Cl))**.5 #Velocity at sea-level (m/s)
-    PR0 = ((2*(W**3)*(Cd**2))/(rho0*S*(Cl**3)))**.5
-    PA0 = ThrustMax * V0
+    V0 = (2*Weight/(rho0*S*Cl))**.5 #Velocity at sea-level (m/s)
+    PR0 = ((2*(Weight**3)*(Cd**2))/(rho0*S*(Cl**3)))**.5
+    PA0 = Thrust * V0
     RCarray = [] 
-    altitudes = [] 
-    for h in range(h1, hf+1):
+    altitudes = []
+    for h in range(h1, int(hf)+1):
         rhoAlt = densityAtAltitude(h) #density of air at altitude 'h' (kg/m^3)
         V = V0 * ((rho0/rhoAlt)**.5) #Velocity of aircraft (m/s)
         PA = PA0 * (rhoAlt/rho0) #power available (N)
         PR = PR0 * ((rho0/rhoAlt)**.5) #power required (N)
-        RC = (PA - PR) / W #Rate of Climb (m/min)
+        RC = (PA - PR) / Weight #Rate of Climb (m/min)
         #print(RC)
         RCarray.append(1/RC)
         altitudes.append(h)
-    tClimb = sp.trapz(RCarray, altitudes) #Time to altitude (min)
+    tClimb = trapz(RCarray, altitudes) #Time to altitude (min)
     return tClimb
     
 def EngineLocation(h,L,l):
@@ -107,7 +109,7 @@ def EngineLocation(h,L,l):
     S = wingReferenceArea(c, b)
     M = Cm * q * S * c 
     print(M)
-    EngineLocation = (-.5*(W - WEngine)*L + (7/8)*l*W + (1/16)*W + M)/WEngine
+    EngineLocation = (-.5*(emptyWeight - engineWeight)*L + (7/8)*l*emptyWeight + (1/16)*emptyWeight + M)/engineWeight
     return EngineLocation
 
 ################################################################################

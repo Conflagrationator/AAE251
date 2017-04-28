@@ -1,6 +1,7 @@
 import csv
 from Launch import *
 from Conversions import *
+from scipy import *
 
 ################################################################################
 # UTILITY FUNCTIONS
@@ -102,21 +103,22 @@ delta = 28.474 # Degrees
 
 # PLANE DATA 
 
-hf = 18288 #final altitude (m)
+hf = (convert(55000,"ft","m")) #final altitude (m)
 theta = 16.5 #angle of attack (Degrees)
 Cd = 0.04423 #coefficient of drag
 Cl = 1.582 #coefficient of lift
-EngineNum = 2 #Number of engines on the plane
-ThrustMax = 160000 * EngineNum #(N)
-ThrustMin = 330000 * EngineNum #(N)
-#ESTIMATES (CHANGE LATER)
-S = 160 #reference area (m^2)
-Mass = 30000 #(kg)
-W = Mass * g0 #(N)
+EngineNum = 4 #Number of engines on the plane
+Thrust = 41000 * EngineNum #(N)
 b = 40 #(m)
 c = 4 #(m)
-MassEngine = 2594 * 2
-WEngine = MassEngine * g0
+fullMass = 37000 #(kg)
+fullWeight = fullMass * g0 #(N)
+emptyMass = 20000
+emptyWeight = emptyMass * g0
+fuelMass = 5000 
+fuelWeight = fuelMass * g0
+engineMass = 2594 * 2
+engineWeight = engineMass * g0
 Cm = 0.0525
 cruiseAltitude = convert(20000, "ft", "m")
 
