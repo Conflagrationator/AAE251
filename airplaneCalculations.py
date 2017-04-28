@@ -1,7 +1,5 @@
 from Reference import *
 from AirplaneParameters import *
-from Conversions import *
-from Atmosphere import *
 
 ################################################################################
 # CALCULATED PARAMETERS
@@ -14,44 +12,37 @@ VStall = stallSpeed((emptyWeight+fuelWeight), densityAtAltitude(hCruise), S, max
 VCruise = CruiseSpeedCalc(hCruise, (fuelWeight+emptyWeight), c, b)
 
 ################################################################################
-# PERFORMANCE VALUES
+# PERFORMANCE
 ################################################################################
-
-# CRUISE SPEED
-
-VCruise = CruiseSpeedCalc(hCruise, (fuelWeight+emptyWeight), c, b)
-print('Cruise Speed(m/s):   ',VCruise)
 
 # RANGE
 
 airplaneRange = airplaneRange(densityAtAltitude(convert(25000,"ft","m")), S, Cl, Cd, tsfc, (emptyWeight+fuelWeight), emptyWeight)
-print('Range(km):           ', convert(airplaneRange, "m", "km"))
 
 # ENDURANCE
 
-Endurance = airplaneEndurance(tsfc, Cl, Cd, (emptyWeight+fuelWeight), emptyWeight)
-print('Endurance(hr):       ', convert(Endurance, "s", "hr"))
-
-# INITIAL RATE OF CLIMB 
-
-RC0 = initialRoC(emptyWeight + fuelWeight)
-print('Rate of Climb(km/hr):', convert(RC0, "m/s","km/hr"))
+Endurance = airplaneEndurance(tsfc, Cl, Cd, 32267, 30000)
 
 # TIME TO CLIMB
 
-Climb = timeToClimb(emptyWeight + fuelWeight)
-print('Time to Climb(hr):   ', convert(Climb,"s","hr"))
+Climb = timeToClimbToAltitude(maxAltitude, fullWeight, chord, wingspan)
 
 # TAKEOFF DISTANCE
 
-LiftD = liftoffDistance(0, (emptyWeight+fuelWeight), VStall, Thrust, coefficientOfRF, b, c, Cl0, wingHeight, spanEF)
-print('Liftoff Distance(m): ', LiftD)
+takeoffDist = liftoffDistance(0, fullWeight, VStall, Thrust, coefficientOfRF, wingspan, chord, Cl0, wingHeight, spanEF)
 
 # LANDING DISTANCE
 
-LandD = landingDistance(0, (emptyWeight+fuelWeight), VStall, Thrust, b, c, Cl0, wingHeight, spanEF)
-print('Landing Distance(m): ', LandD)
+landingDist = landingDistance(0, fullWeight, VStall, Thrust, wingspan, chord, Cl0, wingHeight, spanEF)
 
 ################################################################################
-# PLOTS
+# OUTPUT
 ################################################################################
+
+# PERFORMANCE 
+print("Stall Speed {0} m/s".format(VStall))
+print("Range: {0} km".format(convert(airplaneRange, "m", "km")))
+print("Endurance: {0} hrs".format(convert(Endurance, "s", "hrs")))
+print("Time to Climb to {0} ft: {1} min".format(int(round(convert(maxAltitude, "m", "ft"), 0)), convert(Climb, "s", "min")))
+print("Takeoff Distance: {0} ft".format(convert(takeoffDist, "m", "ft")))
+print("Landing Distance: {0} ft".format(convert(landingDist, "m", "ft")))

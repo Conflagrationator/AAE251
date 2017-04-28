@@ -8,7 +8,8 @@
 length = {
     "m": 1,
     "km": 1e-3,
-    "ft": 3.28084}
+    "ft": 3.28084,
+    "mi": 0.000621371}
 
 time = {
     "s": 1,
@@ -28,7 +29,6 @@ mass = {
 
 speed = {
     "m/s": 1,
-    "km/hr":60*60 * 10**-3,
     "km/s": 1e-3,
     "ft/s": 3.28084,
     "mph": 2.23694,
@@ -59,8 +59,12 @@ angle = {
 
 thrustSpecificFuelConsumption = {
     "kg/(N*s)": 1,
+    "kg/N/s": 1,
     "s/m": 1,
-    "lbm/lbf/hr": 1770.69}
+    "kg/s/N": 1,
+    "lbm/lbf/hr": 1770.69,
+    "lbm/hr/lbf": 1770.69,
+    "lbm/(lbf*hr)": 1770.69}
 
 dimensions = [
     length,
