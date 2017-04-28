@@ -62,9 +62,9 @@ thrustSpecificFuelConsumption = {
     "kg/N/s": 1,
     "s/m": 1,
     "kg/s/N": 1,
-    "lbm/lbf/hr": 35304,
-    "lbm/hr/lbf": 35304,
-    "lbm/(lbf*hr)": 35304}
+    "lbm/lbf/hr": 1770.69,
+    "lbm/hr/lbf": 1770.69,
+    "lbm/(lbf*hr)": 1770.69}
 
 dimensions = [
     length,

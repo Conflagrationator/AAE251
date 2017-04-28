@@ -1,7 +1,6 @@
 from scipy import *
 from Reference import *
 from Atmosphere import *
-from CruiseSpeedCalc import *
 
 ################################################################################
 # AIRPLANE PARAMETER FUNCTIONS
