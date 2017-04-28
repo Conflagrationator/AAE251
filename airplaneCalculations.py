@@ -10,7 +10,7 @@ from Atmosphere import *
 S = wingReferenceArea(c,b)
 AR = aspectRatio(c, b)
 maxCL = max(list(map(lambda row: row["Cl"], airfoilData)))
-VStall = stallSpeed(W, densityAtAltitude(hf), S, maxCL)
+VStall = stallSpeed((emptyWeight+fuelWeight), densityAtAltitude(hCruise), S, maxCL)
 VCruise = CruiseSpeedCalc(hCruise, (fuelWeight+emptyWeight), c, b)
 
 ################################################################################
@@ -24,7 +24,7 @@ print('Cruise Speed(m/s):   ',VCruise)
 
 # RANGE
 
-airplaneRange = turbojetRange(densityAtAltitude(convert(25000,"ft","m")), S, Cl, Cd, tsfc, (emptyWeight+fuelWeight), emptyWeight)
+airplaneRange = airplaneRange(densityAtAltitude(convert(25000,"ft","m")), S, Cl, Cd, tsfc, (emptyWeight+fuelWeight), emptyWeight)
 print('Range(km):           ', convert(airplaneRange, "m", "km"))
 
 # ENDURANCE
