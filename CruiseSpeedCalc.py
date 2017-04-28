@@ -17,5 +17,4 @@ def CruiseSpeedCalc(altitude, mass, c, b):
 
     #where is Lift equal to weight?
     V_cruise = sqrt(7/8*weight / (0.5 * Cl0 * rho_infty * S))
-    print(rho_infty)
     return V_cruise

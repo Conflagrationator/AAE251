@@ -1,5 +1,7 @@
 from scipy import *
 from Reference import *
+from Atmosphere import *
+from CruiseSpeedCalc import *
 
 ################################################################################
 # AIRPLANE PARAMETER FUNCTIONS
@@ -100,14 +102,12 @@ def timeToClimb():
     tClimb = sp.trapz(RCarray, altitudes) #Time to altitude (min)
     return tClimb
     
-def EngineLocation():
-    L = 20
-    l = 11
-    q = dynamicPressure(densityAtAltitude(h), CruiseSpeedCalc(h,Mass,c,b))
+def EngineLocation(h,L,l):
+    q = dynamicPressure(densityAtAltitude(h),CruiseSpeedCalc(h,Mass,c,b))
     S = wingReferenceArea(c, b)
     M = Cm * q * S * c 
+    print(M)
     EngineLocation = (-.5*(W - WEngine)*L + (7/8)*l*W + (1/16)*W + M)/WEngine
-
     return EngineLocation
 ################################################################################
 # ENGINE ANALYSIS

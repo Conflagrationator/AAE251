@@ -116,6 +116,7 @@ b = 40 #(m)
 c = 4 #(m)
 MassEngine = 2594 * 2
 WEngine = MassEngine * g0
+Cm = 0.0525
 
 # Creates a list "airfoilData" which has the format [{"category": value}] for
 # each entry in the csv file
