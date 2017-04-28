@@ -106,10 +106,13 @@ delta = 28.474 # Degrees
 coefficientOfRF = 0.02 
 spanEF = 0.8 # FIXME: test value
 wingHeight = 4
-hFinal = convert(55000,"ft","m") #final altitude (m)
+maxAltitude = (convert(55000, "ft", "m")) #final altitude (m)
+theta = 16.5 #angle of attack (Degrees)
+Cd = 0.04423 #coefficient of drag
+Cl = 1.582 #coefficient of lift
 EngineNum = 4 #Number of engines on the plane
-Thrust = convert(12670,"lbs","N") * EngineNum #(N)
-tsfc = convert(.7,"lbm/lbf/hr","kg/(N*s)")
+Thrust = convert(12670, "lbs", "N") * EngineNum #(N)
+tsfc = convert(0.655, "lbm/hr/lbf", "kg/s/N")
 wingspan = 40 #(m)
 chord = 4 #(m)
 fullMass = 37000 #(kg)
@@ -137,6 +140,6 @@ with open("Resources/TurbofanData.csv") as csvfile:
 with open("Resources/Naca2412.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter=",")
     columnTitles = next(reader) # consume first line & get column titles
-    airfoilData = list(map(lambda row: dict(zip(columnTitles, map(float, row))), reader)) # get rows as dictionaries
+    mainAirfoilData = list(map(lambda row: dict(zip(columnTitles, map(float, row))), reader)) # get rows as dictionaries
 
 # AIRCRAFT PERFORMANCE

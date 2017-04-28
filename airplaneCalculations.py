@@ -7,10 +7,9 @@ from AirplaneParameters import *
 
 S = wingReferenceArea(chord, wingspan)
 AR = aspectRatio(chord, wingspan)
-
-wingClmax = max(list(map(lambda row: row["Cl"], airfoilData)))
-wingCl0 = liftCoefficientAtAngleOfAttack(0)
-wingCd = totalDragCoefficient(wingCl0, AR, spanEF)
+maxCL = max(list(map(lambda row: row["Cl"], mainAirfoilData)))
+CL0 = liftCoefficientAtAngleOfAttack(mainAirfoilData, 0)
+VStall = stallSpeed(fullWeight, densityAtAltitude(convert(60000, "ft", "m")), S, maxCL)
 
 ################################################################################
 # PERFORMANCE
@@ -18,37 +17,29 @@ wingCd = totalDragCoefficient(wingCl0, AR, spanEF)
 
 # RANGE
 
-airplaneRange = airplaneRange(densityAtAltitude(cruiseAltitude), S, wingCl0, wingCd, tsfc, fullWeight, emptyWeight)
+Range = airplaneRange(densityAtAltitude(convert(60000, "ft", "m")), S, Cl, Cd, tsfc, fullWeight, emptyWeight)
+print(Range)
 
 # ENDURANCE
 
-
+Endurance = airplaneEndurance(0.00008064, Cl, Cd, 32267, 30000)
+print(convert(Endurance, "s", "hr"))
 
 # TIME TO CLIMB
 
-
+Climb = timeToClimbToAltitude(maxAltitude, fullWeight, chord, wingspan)
+print(convert(Climb, "s", "hr"))
 
 # TAKEOFF DISTANCE
 
-
+Stakeoff = liftoffDistance(0, fullWeight, VStall, Thrust, coefficientOfRF, wingspan, chord, CL0, wingHeight, spanEF)
+print(Stakeoff)
 
 # LANDING DISTANCE
 
-
+Slanding = landingDistance(0, fullWeight, VStall, Thrust, wingspan, chord, CL0, wingHeight, spanEF)
+print(Slanding)
 
 ################################################################################
-# OUTPUT
+# PLOTS
 ################################################################################
-
-# RANGE
-
-print("Range: {0} m = {1} km = {2} mi".format(
-    airplaneRange,
-    convert(airplaneRange, "m", "km"),
-    convert(airplaneRange, "m", "mi")))
-
-# CRUISE SPEED for ALTITUDES
-
-altitudes = range(0, int(convert(60000, "ft", "m")))
-
-# cruiseSpeedAtAltitude(altitude, weight, c, b)
