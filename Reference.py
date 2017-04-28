@@ -105,11 +105,17 @@ hf = 18288 #final altitude (m)
 theta = 16.5 #angle of attack (Degrees)
 Cd = 0.04423 #coefficient of drag
 Cl = 1.582 #coefficient of lift
-ThrustMax = 510000 *2 #(N)
-ThrustMin = 330000 #(N)
+EngineNum = 2 #Number of engines on the plane
+ThrustMax = 510000 * EngineNum #(N)
+ThrustMin = 330000 * EngineNum #(N)
 #ESTIMATES (CHANGE LATER)
 S = 40 #reference area (m^2)
-W = 150000 * 0.453592 #weight (kg) (this value is an average for now)
+Mass = 60000 #(kg)
+W = Mass * g0 #(N)
+b = 40 #(m)
+c = 4 #(m)
+MassEngine = 2594 * 2
+WEngine = MassEngine * g0
 
 # Creates a list "airfoilData" which has the format [{"category": value}] for
 # each entry in the csv file
