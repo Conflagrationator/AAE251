@@ -54,7 +54,12 @@ density = {
 
 angle = {
     "rad": 1,
-    "deg": 180/3.141592653589793}
+    "deg": 180/3.141592653589793}\
+
+thrustSpecificFuelConsumption = {
+    "kg/(N*s)": 1,
+    "s/m": 1,
+    "lbm/lbf/hr": 35304}
 
 dimensions = [
     length,
@@ -63,7 +68,9 @@ dimensions = [
     speed,
     force,
     pressure,
-    density]
+    density,
+    angle,
+    thrustSpecificFuelConsumption]
     # temperature is handled separately
 
 ################################################################################

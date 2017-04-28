@@ -30,7 +30,7 @@ def dynamicPressure(freestreamDensity, freestreamVelocity):
 def totalLiftCoefficient(totalLift, q, S):
     return totalLift / (q * S)
 
-def liftCoefficientAtAngleOfAttack(angle):
+def liftCoefficientAtAngleOfAttack(airfoilData, angle):
     AnglesAndCls = list(map(lambda row: (row["Alpha"], row["Cl"]), airfoilData))
     return interpolate(AnglesAndCls, angle)
 
