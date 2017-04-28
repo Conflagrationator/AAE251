@@ -33,8 +33,8 @@ speed = {
     "ft/s": 3.28084,
     "mph": 2.23694,
     "kph": 3.6,
-    "kts": 0.514444,
-    "knots": 0.514444}
+    "kts": 1.944,
+    "knots": 1.944}
 
 force = {
     "N": 1,
@@ -60,11 +60,11 @@ angle = {
 thrustSpecificFuelConsumption = {
     "kg/(N*s)": 1,
     "kg/N/s": 1,
-    "s/m": 1,
     "kg/s/N": 1,
-    "lbm/lbf/hr": 1770.69,
-    "lbm/hr/lbf": 1770.69,
-    "lbm/(lbf*hr)": 1770.69}
+    "s/m": 1,
+    "lbm/lbf/hr": 793.6507936,
+    "lbm/hr/lbf": 793.6507936,
+    "lbm/(lbf*hr)": 793.6507936}
 
 dimensions = [
     length,

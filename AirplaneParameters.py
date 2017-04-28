@@ -86,20 +86,20 @@ def landingDistance(altitude, airplaneWeight, stallVelocity, thrust, b, c, CL, w
     
     return (touchdownVelocity**2 * airplaneWeight) / (g0 * 2 * (averageDrag + 0.4 * (airplaneWeight - averageLift)))
 
-def timeToClimbToAltitude(altitude, weight, c, b):
+def timeToClimbToAltitude(altitude, weight, c, b, Cl):
     h1 = 0 #initial altitude (m)
     S = wingReferenceArea(c, b)
     rho0 = densityAtAltitude(0) #air density at sea level (kg/m^3)
-    V0 = (2*weight/(rho0*S*Cl))**.5 #Velocity at sea-level (m/s)
-    PR0 = ((2*(weight**3)*(Cd**2))/(rho0*S*(Cl**3)))**.5
+    V0 = sqrt(2*weight/(rho0*S*Cl)) #Velocity at sea-level (m/s)
+    PR0 = sqrt((2*(weight**3)*(Cd**2))/(rho0*S*(Cl**3)))
     PA0 = Thrust * V0
     RCarray = [] 
     altitudes = []
     for h in range(h1, int(altitude)+1):
         rhoAlt = densityAtAltitude(h) #density of air at altitude 'h' (kg/m^3)
-        V = V0 * ((rho0/rhoAlt)**.5) #Velocity of aircraft (m/s)
+        V = V0 * sqrt(rho0/rhoAlt) #Velocity of aircraft (m/s)
         PA = PA0 * (rhoAlt/rho0) #power available (N)
-        PR = PR0 * ((rho0/rhoAlt)**.5) #power required (N)
+        PR = PR0 * sqrt(rho0/rhoAlt) #power required (N)
         RC = (PA - PR) / weight #Rate of Climb (m/min)
         RCarray.append(1/RC)
         altitudes.append(h)
@@ -109,8 +109,8 @@ def initialRoC(Weight):
     h1 = 0 #initial altitude (m)
     S = wingReferenceArea(c,b)
     rho0 = densityAtAltitude(0) #air density at sea level (kg/m^3)
-    V0 = (2*Weight/(rho0*S*Cl))**.5 #Velocity at sea-level (m/s)
-    PR0 = ((2*(Weight**3)*(Cd**2))/(rho0*S*(Cl**3)))**.5
+    V0 = sqrt(2*Weight/(rho0*S*Cl)) #Velocity at sea-level (m/s)
+    PR0 = sqrt((2*(Weight**3)*(Cd**2))/(rho0*S*(Cl**3)))
     PA0 = Thrust * V0
     return (PA0 - PR0) / Weight
     
