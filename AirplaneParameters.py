@@ -89,7 +89,6 @@ def landingDistance(altitude, airplaneWeight, stallVelocity, thrust, b, c, CL, w
 def timeToClimbToAltitude(altitude, weight, c, b):
     h1 = 0 #initial altitude (m)
     S = wingReferenceArea(c, b)
-    Weight = emptyWeight + fuelWeight
     rho0 = densityAtAltitude(0) #air density at sea level (kg/m^3)
     V0 = (2*weight/(rho0*S*Cl))**.5 #Velocity at sea-level (m/s)
     PR0 = ((2*(weight**3)*(Cd**2))/(rho0*S*(Cl**3)))**.5
