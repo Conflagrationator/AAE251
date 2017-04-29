@@ -125,11 +125,13 @@ def cruiseSpeedAtAltitude(altitude, weight, c, b):
     Cl0 = liftCoefficientAtAngleOfAttack(mainAirfoilData, 0)
     return sqrt(7/8*weight / (0.5 * Cl0 * rho0 * S))
 
-def costOfFuel(FuelWeight):
-    return CostperKGofJF * FuelWeight
+def costOfFuel(FuelMass):
+    print(CostperKGofJF * FuelMass)
+    return CostperKGofJF * FuelMass
     
-def costOfInertMass(Weight):
-    return CostperKGofIM * Weight
+def costOfInertMass(Mass):
+    print(CostperKGofIM * Mass)
+    return CostperKGofIM * Mass
 
 
 ################################################################################

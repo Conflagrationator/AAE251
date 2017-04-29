@@ -50,7 +50,7 @@ landingDist = landingDistance(0, takeoffWeight, VStall0, Thrust, wingspan, chord
 # PRICING
 ################################################################################
 
-Cost = costOfFuel(fuelWeight) + costOfInertMass(emptyWeight)
+Cost = costOfFuel(fuelMass) + costOfInertMass(emptyMass)
 
 ################################################################################
 # OUTPUT
