@@ -40,19 +40,18 @@ def profileDragCoefficient(airfoilData, CL):
 def inducedDragCoefficient(CL, AR, spanEfficiencyFactor):
     return CL**2 / (pi * AR * spanEfficiencyFactor)
 
-def powerRequired(airplaneWeight, CL, CD, density):
-    return sqrt((2 * airplaneWeight * CD**2) / (density * S * CL**2))
+def thrustRequired(altitude, speed, airplaneWeight, c, b, spanEfficiencyFactor):
+    q = dynamicPressure(densityAtAltitude(altitude), speed)
+    S = wingReferenceArea(c, b)
+    AR = aspectRatio(c, b)
+    CL = totalLiftCoefficient(airplaneWeight, q, S)
+    CD = totalDragCoefficient(CL, AR, spanEfficiencyFactor, mainAirfoilData)
+    return sqrt((2 * airplaneWeight**3 * CD**2) / (densityAtAltitude(altitude) * S * CL**3)) / speed
 
 # CONVENIENCE FUNCTIONS
 
 def totalDragCoefficient(CL, AR, spanEfficiencyFactor, airfoilData):
     return profileDragCoefficient(airfoilData, CL) + inducedDragCoefficient(CL, AR, spanEfficiencyFactor)
-
-def powerGivenThrust(thrust, freestreamVelocity):
-    return thrust * freestreamVelocity
-
-def thrustGivenPower(power, freestreamVelocity):
-    return power / freestreamVelocity
 
 # PERFORMANCE
 

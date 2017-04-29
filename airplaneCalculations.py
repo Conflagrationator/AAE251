@@ -1,5 +1,7 @@
 from Reference import *
 from AirplaneParameters import *
+from matplotlib.pyplot import *
+from numpy import *
 
 print("--------------------------------------------------------------------------------")
 
@@ -75,3 +77,47 @@ print("Endurance: {0} hrs".format(convert(Endurance, "s", "hrs")))
 print("Time to Climb to Capture Altitude: {0} min".format(convert(Climb, "s", "min")))
 print("Takeoff Distance: {0} ft".format(convert(takeoffDist, "m", "ft")))
 print("Landing Distance: {0} ft".format(convert(landingDist, "m", "ft")))
+
+# Thrust Available & Thrust Required vs. Velocity for Sea Level, cruise altitude, capture altitude
+
+def safeThrustRequired(captureAltitude, speed, takeoffWeight, chord, wingspan, spanEF):
+    """returns not a number if fails"""
+    try:
+        return thrustRequired(captureAltitude, speed, takeoffWeight, chord, wingspan, spanEF)
+    except Exception:
+        return float("nan")
+
+speeds = list(range(0, 500)) # m/s
+thrustsRequiredSea = list(map(lambda speed: safeThrustRequired(0, speed, takeoffWeight, chord, wingspan, spanEF), speeds))
+thrustsRequiredCruise = list(map(lambda speed: safeThrustRequired(cruiseAltitude, speed, takeoffWeight, chord, wingspan, spanEF), speeds))
+thrustsRequiredCapture = list(map(lambda speed: safeThrustRequired(captureAltitude, speed, takeoffWeight, chord, wingspan, spanEF), speeds))
+thrustAvailableSea = repeat(Thrust * (densityAtAltitude(0)/densityAtAltitude(0)), len(speeds))
+thrustAvailableCruise = repeat(Thrust * (densityAtAltitude(cruiseAltitude)/densityAtAltitude(0)), len(speeds))
+thrustAvailableCapture = repeat(Thrust * (densityAtAltitude(captureAltitude)/densityAtAltitude(0)), len(speeds))
+
+figure(1)
+plot(speeds, thrustAvailableSea, label="TA Sea", color="blue")
+plot(speeds, thrustsRequiredSea, label="TR Sea", color="red")
+title("Thrust vs. Speed at Sea Level")
+xlabel("Speed (m/s)")
+ylabel("Thrust (N)")
+legend()
+
+figure(2)
+plot(speeds, thrustAvailableCruise, label="TA Cruise", color="blue")
+plot(speeds, thrustsRequiredCruise, label="TR Cruise", color="red")
+title("Thrust vs. Speed at Cruise Altitude")
+xlabel("Speed (m/s)")
+ylabel("Thrust (N)")
+legend()
+
+figure(3)
+plot(speeds, thrustAvailableCapture, label="TA Capture", color="blue")
+plot(speeds, thrustsRequiredCapture, label="TR Capture", color="red")
+title("Thrust vs. Speed at Capture Altitude")
+xlabel("Speed (m/s)")
+ylabel("Thrust (N)")
+legend()
+
+# Show all Plots
+show()
