@@ -124,6 +124,8 @@ engineMass = 2335 * EngineNum
 engineWeight = engineMass * g0
 Cm = 0.0525
 cruiseAltitude = convert(20000, "ft", "m")
+CostperKGofJF = 100 #$/kg
+CostperKGofIM = 1000 #$/kg
 
 # Creates a list "airfoilData" which has the format [{"category": value}] for
 # each entry in the csv file

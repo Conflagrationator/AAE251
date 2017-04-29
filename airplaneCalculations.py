@@ -47,10 +47,19 @@ takeoffDist = liftoffDistance(0, takeoffWeight, VStall0, Thrust, coefficientOfRF
 landingDist = landingDistance(0, takeoffWeight, VStall0, Thrust, wingspan, chord, Cl0, wingHeight, spanEF)
 
 ################################################################################
+# PRICING
+################################################################################
+Cost = costOfFuel(fuelWeight) + costOfInertMass(emptyWeight)
+
+################################################################################
 # OUTPUT
 ################################################################################
 
 # PARAMETERS
+print("---- PRICE ----")
+
+print("Price of Airplane: ${0}".format(Cost))
+
 print("---- PARAMETERS ----")
 
 print("Wingspan: {0} m".format(wingspan))
@@ -72,7 +81,7 @@ print("---- PERFORMANCE ----")
 print("Stall Speed at Sea Level: {0} kts".format(convert(VStall0, "m/s", "kts")))
 print("Stall Speed at Capture Altitude: {0} kts".format(convert(VStallCapture, "m/s", "kts")))
 print("Cruise Speed: {0} kts".format(convert(VCruise, "m/s", "kts")))
-print("Range: {0} mi".format(convert(Range, "m", "mi")))
+print("Range: {0} km".format(convert(Range, "m", "km")))
 print("Endurance: {0} hrs".format(convert(Endurance, "s", "hrs")))
 print("Time to Climb to Capture Altitude: {0} min".format(convert(Climb, "s", "min")))
 print("Takeoff Distance: {0} ft".format(convert(takeoffDist, "m", "ft")))
