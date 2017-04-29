@@ -97,7 +97,7 @@ def safeThrustRequired(captureAltitude, speed, takeoffWeight, chord, wingspan, s
     except Exception:
         return float("nan")
 
-speeds = list(range(0, 500)) # m/s
+speeds = list(range(1, 500)) # m/s
 thrustsRequiredSea = list(map(lambda speed: safeThrustRequired(0, speed, takeoffWeight, chord, wingspan, spanEF), speeds))
 thrustsRequiredCruise = list(map(lambda speed: safeThrustRequired(cruiseAltitude, speed, takeoffWeight, chord, wingspan, spanEF), speeds))
 thrustsRequiredCapture = list(map(lambda speed: safeThrustRequired(captureAltitude, speed, takeoffWeight, chord, wingspan, spanEF), speeds))
