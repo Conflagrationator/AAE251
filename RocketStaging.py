@@ -36,3 +36,7 @@ def split_deltaV(g0, f_inert, dV_needed, isp): # calculates the split deltaV
     minIndex = massList.index(minMass)
     split = splitList[minIndex]
     return(split)
+    
+    
+    
+print(rocket_mass(g0, f_inert, dV, isp, m_pay))

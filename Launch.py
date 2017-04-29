@@ -1,7 +1,7 @@
 ################################################################################
 # LOSS CALCULATIONS
 ################################################################################
-
+ 
 def dragLossUpToAltitude(altitude):
     """gives the drag loss up to the given altitude"""
     if 0 <= altitude and altitude <= 20000:

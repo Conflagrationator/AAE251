@@ -76,9 +76,9 @@ dVforGeoStatOrbit = 4478.0452652 + dVdragLoss + dVgravityLoss + dVSteeringLoss #
 
 f_inert = [0.08, 0.12] # inert mass fraction 
 Isp = [310, 360] # s
-dV = [5000, 2000] #m/s
-m_pay = 10000 #kg
-dV_needed = 9000 # m/s
+dV = [5716, 8612] #m/s
+m_pay = 5000 #kg
+dV_needed = 14.354 # m/s
 m_inert = [10000]
 
 # TODO: guys, please fix your naming conflicts...
